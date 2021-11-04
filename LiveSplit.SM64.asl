@@ -72,6 +72,7 @@ startup {
     settings.Add("hmc100Split", false, "HMC100", "settingsSplit");
     settings.Add("vanishCapSplit", false, "VCutM", "settingsSplit");
     settings.Add("ddd100Split", false, "DDD100", "settingsSplit");
+	settings.Add("bitfsSplit", false, "BitFS", "settingsSplit");
     settings.Add("upstairsDoorTouchSplit", false, "Upstairs door touch", "settingsSplit");
     settings.Add("wmotrSplit", false, "WMotR", "settingsSplit");
     
@@ -98,6 +99,7 @@ reset {
 split {
     // Map IDs
     const int bow1MapId = 30;
+    const int bow2MapId = 33;
     const int bow3MapId = 34;
     const int vcutmMapId = 18;
     const int wmotrMapId = 31;
@@ -185,6 +187,11 @@ split {
 
     // DDD100
     if (settings["ddd100Split"] && fadeout && old.mapId == dddMapId && old.coins >= 100 && old.animation == starGrabAnimation) {
+        return true;
+    }
+	
+	// BitDW
+    if (settings["bitfsSplit"] && fadeout && old.mapId == bow2MapId && old.animation == starGrabAnimation) {
         return true;
     }
     
