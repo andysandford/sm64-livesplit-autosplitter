@@ -4,7 +4,7 @@ Download the file called [`LiveSplit.SM64.asl`](https://github.com/andysandford/
 
 Then go to `Layout Settings` and look at the `Scriptable Auto Splitter` tab.
 Choose the file you downloaded in the `Script Path` field. It should load and show you some different split options.  
-![image](https://user-images.githubusercontent.com/93740337/140427886-b8855164-7857-457d-a234-6d89e0539147.png)  
+![image](https://user-images.githubusercontent.com/93740337/140611218-e0df1e70-bdbc-4210-a250-88710c9cc6bf.png)  
 
 Then you just check the boxes for the splits you want. If a split you want is missing feel free to open an issue here or contact me (AndySandford) on Discord so I can add it.
 
