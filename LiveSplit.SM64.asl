@@ -4,6 +4,7 @@ state("mupen64plus-ui-console", "Japanese Mupen64Plus") {
     byte mapId : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
     ushort animation : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207B08;
+    short stars : "mupen64plus.dll", 0x3231C1C, 0x339EA8;
     byte coins : "mupen64plus.dll", 0x3231C1C, 0x339EAA;
     byte bobStars : "mupen64plus.dll", 0x3231C1C, 0x207B0F;
     byte wfStars : "mupen64plus.dll", 0x3231C1C, 0x207B0E;
@@ -28,6 +29,7 @@ state("project64", "Japanese Project64") {
     byte mapId : "Project64.exe", 0xD6A1C, 0x32CE9A;
     ushort animation : "Project64.exe", 0xD6A1C, 0x339E0C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207B08;
+    short stars : "Project64.exe", 0xD6A1C, 0x339EA8;
     byte coins : "Project64.exe", 0xD6A1C, 0x339EAA;
     byte bobStars : "Project64.exe", 0xD6A1C, 0x207B0F;
     byte wfStars : "Project64.exe", 0xD6A1C, 0x207B0E;
@@ -56,7 +58,7 @@ init {
     {
         version = "Japanese Project64";
     }
-    
+
     // Global variables
     vars.launchMapId = 1;
 }
@@ -64,6 +66,7 @@ init {
 startup {
     settings.Add("settingsStart", true, "Start Settings");
     settings.Add("launchStart", false, "Start on Game Launch", "settingsStart");
+
     settings.Add("settingsSplit", true, "Split Settings");
     settings.Add("starAndKeySplit", false, "Every star and key", "settingsSplit");
     settings.Add("courseSplit", false, "Course completion", "settingsSplit");
@@ -72,13 +75,32 @@ startup {
     settings.Add("hmc100Split", false, "HMC100", "settingsSplit");
     settings.Add("vanishCapSplit", false, "VCutM", "settingsSplit");
     settings.Add("ddd100Split", false, "DDD100", "settingsSplit");
-	settings.Add("bitfsSplit", false, "BitFS", "settingsSplit");
+    settings.Add("bitfsSplit", false, "BitFS", "settingsSplit");
     settings.Add("upstairsDoorTouchSplit", false, "Upstairs door touch", "settingsSplit");
     settings.Add("wmotrSplit", false, "WMotR", "settingsSplit");
-    
+    settings.Add("enterBitdwSplit", false, "Enter BitDW", "settingsSplit");
+    settings.Add("enterBitsSplit", false, "Enter BitS", "settingsSplit");
+    settings.Add("enterDddSplit", false, "Enter DDD", "settingsSplit");
+
+    settings.Add("stage16Split", false, "16 Star Stage Splits", "settingsSplit");
+    settings.Add("hmc15Split", false, "HMC (15)", "stage16Split");
+    settings.Add("ddd16Split", false, "DDD (16)", "stage16Split");
+
+    settings.Add("stage16LbljSplit", false, "16 Star LBLJ Stage Splits", "stage16Split");
+    settings.Add("wf4Split", false, "WF (4)", "stage16LbljSplit");
+    settings.Add("ssl7Split", false, "SSL (7)", "stage16LbljSplit");
+    settings.Add("lll11Split", false, "LLL (11)", "stage16LbljSplit");
+
+    settings.Add("stage16NoLbljSplit", false, "16 Star No LBLJ Stage Splits", "stage16Split");
+    settings.Add("bob1Split", false, "BOB (1)", "stage16NoLbljSplit");
+    settings.Add("wf6Split", false, "WF (6)", "stage16NoLbljSplit");
+    settings.Add("ccm8Split", false, "CCM (8)", "stage16NoLbljSplit");
+    settings.Add("ssl11Split", false, "SSL (11)", "stage16NoLbljSplit");
+    settings.Add("lll12Split", false, "LLL (12)", "stage16NoLbljSplit");
+
     settings.Add("settingsReset", true, "Reset Settings");
     settings.Add("gameResetReset", false, "Reset on Game Reset", "settingsReset");
-    
+
     settings.Add("gameVersion", true, "Game Version (requires LiveSplit restart)");
     settings.Add("gameVerJPM64P", false, "Japanese Mupen64Plus", "gameVersion");
     settings.Add("gameVerJPPJ64", true, "Japanese Project64", "gameVersion");
@@ -98,6 +120,8 @@ reset {
 
 split {
     // Map IDs
+    const int bitdwMapId = 17;
+    const int bitsMapId = 21;
     const int bow1MapId = 30;
     const int bow2MapId = 33;
     const int bow3MapId = 34;
@@ -118,16 +142,16 @@ split {
     const int thiMapId = 13;
     const int ttcMapId = 14;
     const int rrMapId = 15;
-    
+
     // Animations
     const int starGrabAnimation = 4866;
     const int starGrabAnimationSwim = 4867;
     const int keyDoorTouchAnimation = 4910;
     const int gameEndAnimation = 6409;
-    
+
     // Stars are represented by 1 bit each. When all stars in a stage are collected the 7 least significant bits are all 1
     const int stageDone = 127;
-    
+
     // Record stars for each stage
     var stageStars = new Dictionary<int, int>();
     // We mask out the 8th bit since it does not represent a star
@@ -153,7 +177,7 @@ split {
     if (current.animation == gameEndAnimation && old.animation != gameEndAnimation && current.mapId == bow3MapId) {
         return true;
     }
-    
+
     // Star and key split
     if (settings["starAndKeySplit"] && fadeout && (old.animation == starGrabAnimation || old.animation == starGrabAnimationSwim)) {
         return true;
@@ -169,17 +193,64 @@ split {
             return true;
         }
     }
-    
+
+    // 16 Star Stage Splits
+    if (settings["bob1Split"] && fadeout && old.mapId == bobMapId && old.animation == starGrabAnimation && current.stars == 1) {
+        return true;
+    }
+    if (settings["wf4Split"] && fadeout && old.mapId == wfMapId && old.animation == starGrabAnimation && current.stars == 4) {
+        return true;
+    }
+    if (settings["wf6Split"] && fadeout && old.mapId == wfMapId && old.animation == starGrabAnimation && current.stars == 6) {
+        return true;
+    }
+    if (settings["ssl7Split"] && fadeout && old.mapId == sslMapId && old.animation == starGrabAnimation && current.stars == 7) {
+        return true;
+    }
+    if (settings["ccm8Split"] && fadeout && old.mapId == ccmMapId && old.animation == starGrabAnimation && current.stars == 8) {
+        return true;
+    }
+    if (settings["ssl11Split"] && fadeout && old.mapId == sslMapId && old.animation == starGrabAnimation && current.stars == 11) {
+        return true;
+    }
+    if (settings["lll11Split"] && fadeout && old.mapId == lllMapId && old.animation == starGrabAnimation && current.stars == 11) {
+        return true;
+    }
+    if (settings["lll12Split"] && fadeout && old.mapId == lllMapId && old.animation == starGrabAnimation && current.stars == 12) {
+        return true;
+    }
+    if (settings["hmc15Split"] && fadeout && old.mapId == hmcMapId && old.animation == starGrabAnimation && current.stars == 15) {
+        return true;
+    }
+    if (settings["ddd16Split"] && fadeout && old.mapId == dddMapId && old.animation == starGrabAnimation && current.stars == 16) {
+        return true;
+    }
+
+    // Enter BitDW
+    if (settings["enterBitdwSplit"] && fadeout && current.mapId == bitdwMapId) {
+        return true;
+    }
+
+    // Enter DDD
+    if (settings["enterDddSplit"] && fadeout && current.mapId == dddMapId) {
+        return true;
+    }
+
+    // Enter BitS
+    if (settings["enterBitsSplit"] && fadeout && current.mapId == bitsMapId) {
+        return true;
+    }
+
     // BitDW
     if (settings["bitdwSplit"] && fadeout && old.mapId == bow1MapId && old.animation == starGrabAnimation) {
         return true;
     }
-    
+
     // HMC100
     if (settings["hmc100Split"] && fadeout && old.mapId == hmcMapId && old.coins >= 100 && old.animation == starGrabAnimation) {
         return true;
     }
-    
+
     // Vanish Cap
     if (settings["vanishCapSplit"] && fadeout && old.mapId == vcutmMapId && old.animation == starGrabAnimation) {
         return true;
@@ -189,19 +260,19 @@ split {
     if (settings["ddd100Split"] && fadeout && old.mapId == dddMapId && old.coins >= 100 && old.animation == starGrabAnimation) {
         return true;
     }
-	
-	// BitDW
+
+    // BitFS
     if (settings["bitfsSplit"] && fadeout && old.mapId == bow2MapId && old.animation == starGrabAnimation) {
         return true;
     }
-    
+
     // Upstairs door touch
     // Mask out the bits indicating that key 2 has been acquired but the upstairs door has not been touched.
     bool key2 = (current.keys & 32) == 32;
     if (settings["upstairsDoorTouchSplit"] && current.animation == keyDoorTouchAnimation && old.animation != keyDoorTouchAnimation && key2) {
         return true;
     }
-    
+
     // Wing Mario over the Rainbow
     if (settings["wmotrSplit"] && fadeout && old.mapId == wmotrMapId && old.animation == starGrabAnimation) {
         return true;
