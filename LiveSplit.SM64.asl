@@ -2,6 +2,7 @@
 state("mupen64plus-ui-console", "Japanese Mupen64Plus") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
     byte mapId : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
+    byte level : "mupen64plus.dll", 0x3231C1C, 0x339EDA;
     ushort animation : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207B08;
     short stars : "mupen64plus.dll", 0x3231C1C, 0x339EA8;
@@ -27,6 +28,7 @@ state("mupen64plus-ui-console", "Japanese Mupen64Plus") {
 state("project64", "Japanese Project64") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32C640;
     byte mapId : "Project64.exe", 0xD6A1C, 0x32CE9A;
+    byte level : "Project64.exe", 0xD6A1C, 0x339EDA;
     ushort animation : "Project64.exe", 0xD6A1C, 0x339E0C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207B08;
     short stars : "Project64.exe", 0xD6A1C, 0x339EA8;
@@ -232,7 +234,8 @@ split {
     }
 
     // Enter DDD
-    if (settings["enterDddSplit"] && fadeout && current.mapId == dddMapId) {
+    // Uses a different mechanic than the normal fadeout split because level changes at the same time as x-cam shows up, whereas mapId does not change until star select shows up.
+    if (settings["enterDddSplit"] && old.level != current.level && current.level == dddMapId) {
         return true;
     }
 
