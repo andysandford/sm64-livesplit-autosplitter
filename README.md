@@ -13,7 +13,7 @@ Make sure you select the correct game version and emulator (JP Mupen64Plus or JP
 If everything has been configured correctly LiveSplit should start when you start or reset your emulator.
 
 # Known issues
-Doing Metal Cap as the last star of HMC does not trigger the split.
+Doing Metal Cap as the last star of HMC does not trigger the split. It will instead trigger after the last proper star of HMC, causing a split one star early.
 
 # Example configs
 ## 16 Star No LBLJ
