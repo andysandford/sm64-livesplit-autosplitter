@@ -200,7 +200,6 @@ start {
 }
 
 reset {
-    const int bobStageIndex = 9;
     if (settings["gameResetReset"] && (current.stageIndex == vars.launchStageIndex && old.stageIndex != vars.launchStageIndex || (current.stageIndex == vars.launchStageIndex && old.stageIndex == vars.launchStageIndex && current.gameRunTime < old.gameRunTime))) {
         return true;
     }
