@@ -24,6 +24,18 @@ Doing Metal Cap as the last star of HMC is not supported. If you do this then th
 ![image](https://user-images.githubusercontent.com/93740337/140610687-a99dfa21-d8a3-408a-9c08-6998235c5276.png)
 ![image](https://user-images.githubusercontent.com/93740337/140610660-d1bfe335-eabd-4812-91ec-80de64a46dfb.png)
 
+## 70 Star CCM18 No TTC100 (SL Reds)
+![70-no-ttc-100](https://user-images.githubusercontent.com/93740337/141648786-b9276d5c-243f-4f6c-a04c-18c1255e59e0.png)
+![image](https://user-images.githubusercontent.com/93740337/141648743-b302b817-b076-4096-bf6b-89917e0a93fc.png)
+
+## 70 Star CCM18 With TTC100
+![70-ccm18](https://user-images.githubusercontent.com/93740337/141648863-2bf1d893-6bb8-4a13-96b5-8c8a2ea4860e.png)
+![image](https://user-images.githubusercontent.com/93740337/141648885-687c7ec0-e60a-4bac-aed3-bdcde4236bcb.png)
+
+## 70 Star CCM17 With Island Hop
+![70-ccm17](https://user-images.githubusercontent.com/93740337/141648898-b3af60f5-30d2-4695-a7e1-fe4acf2b2f44.png)
+![image](https://user-images.githubusercontent.com/93740337/141648959-b7d6ba12-2b4d-48e6-b6ea-ca679ff6007c.png)
+
 ## 120 Star No LBLJ
 ![image](https://user-images.githubusercontent.com/93740337/140610848-1e073741-1bbe-4f02-8738-b60b4229662a.png)
 ![image](https://user-images.githubusercontent.com/93740337/140610792-a845726a-737b-467b-bbb7-04a2c6bb4218.png)
