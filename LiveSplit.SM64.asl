@@ -1,9 +1,9 @@
-// Memory of Japanese Mupen64Plus version
-state("mupen64plus-ui-console", "Japanese Mupen64Plus") {
+// Memory of JP Mupen64Plus version
+state("mupen64plus-ui-console", "JP Mupen64Plus") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
-    byte mapId : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
+    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x339EDA;
-    ushort animation : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
+    ushort action : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207B08;
     short stars : "mupen64plus.dll", 0x3231C1C, 0x339EA8;
     byte coins : "mupen64plus.dll", 0x3231C1C, 0x339EAA;
@@ -24,12 +24,12 @@ state("mupen64plus-ui-console", "Japanese Mupen64Plus") {
     byte rrStars : "mupen64plus.dll", 0x3231C1C, 0x207B19;
 }
 
-// Memory of Japanese Project64 version
-state("project64", "Japanese Project64") {
+// Memory of JP Project64 version
+state("project64", "JP Project64") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32C640;
-    byte mapId : "Project64.exe", 0xD6A1C, 0x32CE9A;
+    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32CE9A;
     byte level : "Project64.exe", 0xD6A1C, 0x339EDA;
-    ushort animation : "Project64.exe", 0xD6A1C, 0x339E0C;
+    ushort action : "Project64.exe", 0xD6A1C, 0x339E0C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207B08;
     short stars : "Project64.exe", 0xD6A1C, 0x339EA8;
     byte coins : "Project64.exe", 0xD6A1C, 0x339EAA;
@@ -50,19 +50,79 @@ state("project64", "Japanese Project64") {
     byte rrStars : "Project64.exe", 0xD6A1C, 0x207B19;
 }
 
+// Memory of US Mupen64Plus version
+state("mupen64plus-ui-console", "US Mupen64Plus") {
+    uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32D580;
+    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32DDFA;
+    byte level : "mupen64plus.dll", 0x3231C1C, 0x33B24A;
+    ushort action : "mupen64plus.dll", 0x3231C1C, 0x33B17C;
+    byte keys : "mupen64plus.dll", 0x3231C1C, 0x207708;
+    short stars : "mupen64plus.dll", 0x3231C1C, 0x33B218;
+    byte coins : "mupen64plus.dll", 0x3231C1C, 0x33B21A;
+    byte bobStars : "mupen64plus.dll", 0x3231C1C, 0x20770F;
+    byte wfStars : "mupen64plus.dll", 0x3231C1C, 0x20770E;
+    byte jrbStars : "mupen64plus.dll", 0x3231C1C, 0x20770D;
+    byte ccmStars : "mupen64plus.dll", 0x3231C1C, 0x20770C;
+    byte bbhStars : "mupen64plus.dll", 0x3231C1C, 0x207713;
+    byte hmcStars : "mupen64plus.dll", 0x3231C1C, 0x207712;
+    byte lllStars : "mupen64plus.dll", 0x3231C1C, 0x207711;
+    byte sslStars : "mupen64plus.dll", 0x3231C1C, 0x207710;
+    byte dddStars : "mupen64plus.dll", 0x3231C1C, 0x207717;
+    byte slStars : "mupen64plus.dll", 0x3231C1C, 0x207716;
+    byte wdwStars : "mupen64plus.dll", 0x3231C1C, 0x207715;
+    byte ttmStars : "mupen64plus.dll", 0x3231C1C, 0x207714;
+    byte thiStars : "mupen64plus.dll", 0x3231C1C, 0x20771B;
+    byte ttcStars : "mupen64plus.dll", 0x3231C1C, 0x20771A;
+    byte rrStars : "mupen64plus.dll", 0x3231C1C, 0x207719;
+}
+
+// Memory of US Project64 version
+state("project64", "US Project64") {
+    uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32D580;
+    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32DDFA;
+    byte level : "Project64.exe", 0xD6A1C, 0x33B24A;
+    ushort action : "Project64.exe", 0xD6A1C, 0x33B17C;
+    byte keys : "Project64.exe", 0xD6A1C, 0x207708;
+    short stars : "Project64.exe", 0xD6A1C, 0x33B218;
+    byte coins : "Project64.exe", 0xD6A1C, 0x20770F;
+    byte bobStars : "Project64.exe", 0xD6A1C, 0x20770F;
+    byte wfStars : "Project64.exe", 0xD6A1C, 0x20770E;
+    byte jrbStars : "Project64.exe", 0xD6A1C, 0x20770D;
+    byte ccmStars : "Project64.exe", 0xD6A1C, 0x20770C;
+    byte bbhStars : "Project64.exe", 0xD6A1C, 0x207713;
+    byte hmcStars : "Project64.exe", 0xD6A1C, 0x207712;
+    byte lllStars : "Project64.exe", 0xD6A1C, 0x207711;
+    byte sslStars : "Project64.exe", 0xD6A1C, 0x207710;
+    byte dddStars : "Project64.exe", 0xD6A1C, 0x207717;
+    byte slStars : "Project64.exe", 0xD6A1C, 0x207716;
+    byte wdwStars : "Project64.exe", 0xD6A1C, 0x207715;
+    byte ttmStars : "Project64.exe", 0xD6A1C, 0x207714;
+    byte thiStars : "Project64.exe", 0xD6A1C, 0x20771B;
+    byte ttcStars : "Project64.exe", 0xD6A1C, 0x20771A;
+    byte rrStars : "Project64.exe", 0xD6A1C, 0x207719;
+}
+
 init {
     // Version identifier
     if (settings["gameVerJPM64P"])
     {
-        version = "Japanese Mupen64Plus";
+        version = "JP Mupen64Plus";
     }
     if (settings["gameVerJPPJ64"])
     {
-        version = "Japanese Project64";
+        version = "JP Project64";
+    }
+    if (settings["gameVerUSM64P"])
+    {
+        version = "US Mupen64Plus";
+    }
+    if (settings["gameVerUSPJ64"])
+    {
+        version = "US Project64";
     }
 
     // Global variables
-    vars.launchMapId = 1;
+    vars.launchStageIndex = 1;
 }
 
 startup {
@@ -84,6 +144,29 @@ startup {
     settings.Add("enterBitsSplit", false, "Enter BitS", "settingsSplit");
     settings.Add("enterDddSplit", false, "Enter DDD", "settingsSplit");
 
+    settings.Add("stage70Split", false, "70 Star Stage Splits", "settingsSplit");
+    settings.Add("pss3Split", false, "PSS (3)", "stage70Split");
+    settings.Add("wf9Split", false, "WF (9)", "stage70Split");
+    settings.Add("wf10Split", false, "WF (10)", "stage70Split");
+    settings.Add("ccm17Split", false, "CCM (17)", "stage70Split");
+    settings.Add("ccm18Split", false, "CCM (18)", "stage70Split");
+    settings.Add("bbh19Split", false, "BBH (19)", "stage70Split");
+    settings.Add("bbh20Split", false, "BBH (20)", "stage70Split");
+    settings.Add("ssl24Split", false, "SSL (24)", "stage70Split");
+    settings.Add("lll30Split", false, "LLL (30)", "stage70Split");
+    settings.Add("ddd33Split", false, "DDD (33)", "stage70Split");
+    settings.Add("wdw39Split", false, "WDW (39)", "stage70Split");
+    settings.Add("thi42Split", false, "THI (42)", "stage70Split");
+    settings.Add("ttm48Split", false, "TTM (48)", "stage70Split");
+    settings.Add("sl52Split", false, "SL (52)", "stage70Split");
+    settings.Add("sl53Split", false, "SL (53)", "stage70Split");
+    settings.Add("hmc58Split", false, "HMC (58)", "stage70Split");
+    settings.Add("hmc59Split", false, "HMC (59)", "stage70Split");
+    settings.Add("rr62Split", false, "RR (62)", "stage70Split");
+    settings.Add("rr63Split", false, "RR (63)", "stage70Split");
+    settings.Add("ttc69Split", false, "TTC (69)", "stage70Split");
+    settings.Add("ttc70Split", false, "TTC (70)", "stage70Split");
+
     settings.Add("stage16Split", false, "16 Star Stage Splits", "settingsSplit");
     settings.Add("hmc15Split", false, "HMC (15)", "stage16Split");
     settings.Add("ddd16Split", false, "DDD (16)", "stage16Split");
@@ -104,52 +187,63 @@ startup {
     settings.Add("gameResetReset", false, "Reset on Game Reset", "settingsReset");
 
     settings.Add("gameVersion", true, "Game Version (requires LiveSplit restart)");
-    settings.Add("gameVerJPM64P", false, "Japanese Mupen64Plus", "gameVersion");
-    settings.Add("gameVerJPPJ64", true, "Japanese Project64", "gameVersion");
+    settings.Add("gameVerJPM64P", false, "JP Mupen64Plus", "gameVersion");
+    settings.Add("gameVerJPPJ64", true, "JP Project64", "gameVersion");
+    settings.Add("gameVerUSM64P", false, "US Mupen64Plus", "gameVersion");
+    settings.Add("gameVerUSPJ64", true, "US Project64", "gameVersion");
 }
 
 start {
-    if (settings["launchStart"] && current.mapId == vars.launchMapId && current.gameRunTime == 0) {
+    const int bobStageIndex = 9;
+    if (settings["launchStart"] && current.stageIndex == vars.launchStageIndex && current.gameRunTime == 0) {
+        return true;
+    }
+    if (settings["basementSegmentStart"] && old.stageIndex == bobStageIndex && current.stageIndex != bobStageIndex) {
         return true;
     }
 }
 
 reset {
-    if (settings["gameResetReset"] && (current.mapId == vars.launchMapId && old.mapId != vars.launchMapId || (current.mapId == vars.launchMapId && old.mapId == vars.launchMapId && current.gameRunTime < old.gameRunTime))) {
+    const int bobStageIndex = 9;
+    if (settings["gameResetReset"] && (current.stageIndex == vars.launchStageIndex && old.stageIndex != vars.launchStageIndex || (current.stageIndex == vars.launchStageIndex && old.stageIndex == vars.launchStageIndex && current.gameRunTime < old.gameRunTime))) {
+        return true;
+    }
+    if (settings["basementSegmentStart"] && current.stageIndex == bobStageIndex) {
         return true;
     }
 }
 
 split {
     // Map IDs
-    const int bitdwMapId = 17;
-    const int bitsMapId = 21;
-    const int bow1MapId = 30;
-    const int bow2MapId = 33;
-    const int bow3MapId = 34;
-    const int vcutmMapId = 18;
-    const int wmotrMapId = 31;
-    const int bobMapId = 9;
-    const int wfMapId = 24;
-    const int jrbMapId = 12;
-    const int ccmMapId = 5;
-    const int bbhMapId = 4;
-    const int hmcMapId = 7;
-    const int lllMapId = 22;
-    const int sslMapId = 8;
-    const int dddMapId = 23;
-    const int slMapId = 10;
-    const int wdwMapId = 11;
-    const int ttmMapId = 36;
-    const int thiMapId = 13;
-    const int ttcMapId = 14;
-    const int rrMapId = 15;
+    const int bitdwStageIndex = 17;
+    const int bitsStageIndex = 21;
+    const int bow1StageIndex = 30;
+    const int bow2StageIndex = 33;
+    const int bow3StageIndex = 34;
+    const int vcutmStageIndex = 18;
+    const int wmotrStageIndex = 31;
+    const int pssStageIndex = 27;
+    const int bobStageIndex = 9;
+    const int wfStageIndex = 24;
+    const int jrbStageIndex = 12;
+    const int ccmStageIndex = 5;
+    const int bbhStageIndex = 4;
+    const int hmcStageIndex = 7;
+    const int lllStageIndex = 22;
+    const int sslStageIndex = 8;
+    const int dddStageIndex = 23;
+    const int slStageIndex = 10;
+    const int wdwStageIndex = 11;
+    const int ttmStageIndex = 36;
+    const int thiStageIndex = 13;
+    const int ttcStageIndex = 14;
+    const int rrStageIndex = 15;
 
-    // Animations
-    const int starGrabAnimation = 4866;
-    const int starGrabAnimationSwim = 4867;
-    const int keyDoorTouchAnimation = 4910;
-    const int gameEndAnimation = 6409;
+    // actions
+    const int starGrabAction = 4866;
+    const int starGrabActionSwim = 4867;
+    const int keyDoorTouchAction = 4910;
+    const int gameEndAction = 6409;
 
     // Stars are represented by 1 bit each. When all stars in a stage are collected the 7 least significant bits are all 1
     const int stageDone = 127;
@@ -157,127 +251,192 @@ split {
     // Record stars for each stage
     var stageStars = new Dictionary<int, int>();
     // We mask out the 8th bit since it does not represent a star
-    stageStars[bobMapId] = current.bobStars & stageDone;
-    stageStars[wfMapId] = current.wfStars & stageDone;
-    stageStars[jrbMapId] = current.jrbStars & stageDone;
-    stageStars[ccmMapId] = current.ccmStars & stageDone;
-    stageStars[bbhMapId] = current.bbhStars & stageDone;
-    stageStars[hmcMapId] = current.hmcStars & stageDone;
-    stageStars[lllMapId] = current.lllStars & stageDone;
-    stageStars[sslMapId] = current.sslStars & stageDone;
-    stageStars[dddMapId] = current.dddStars & stageDone;
-    stageStars[slMapId] = current.slStars & stageDone;
-    stageStars[wdwMapId] = current.wdwStars & stageDone;
-    stageStars[ttmMapId] = current.ttmStars & stageDone;
-    stageStars[thiMapId] = current.thiStars & stageDone;
-    stageStars[ttcMapId] = current.ttcStars & stageDone;
-    stageStars[rrMapId] = current.rrStars & stageDone;
+    stageStars[bobStageIndex] = current.bobStars & stageDone;
+    stageStars[wfStageIndex] = current.wfStars & stageDone;
+    stageStars[jrbStageIndex] = current.jrbStars & stageDone;
+    stageStars[ccmStageIndex] = current.ccmStars & stageDone;
+    stageStars[bbhStageIndex] = current.bbhStars & stageDone;
+    stageStars[hmcStageIndex] = current.hmcStars & stageDone;
+    stageStars[lllStageIndex] = current.lllStars & stageDone;
+    stageStars[sslStageIndex] = current.sslStars & stageDone;
+    stageStars[dddStageIndex] = current.dddStars & stageDone;
+    stageStars[slStageIndex] = current.slStars & stageDone;
+    stageStars[wdwStageIndex] = current.wdwStars & stageDone;
+    stageStars[ttmStageIndex] = current.ttmStars & stageDone;
+    stageStars[thiStageIndex] = current.thiStars & stageDone;
+    stageStars[ttcStageIndex] = current.ttcStars & stageDone;
+    stageStars[rrStageIndex] = current.rrStars & stageDone;
 
-    bool fadeout = old.mapId != current.mapId;
+    bool fadeout = old.stageIndex != current.stageIndex;
 
     // Game end (bowser 3 big star)
-    if (current.animation == gameEndAnimation && old.animation != gameEndAnimation && current.mapId == bow3MapId) {
+    if (current.action == gameEndAction && old.action != gameEndAction && current.stageIndex == bow3StageIndex) {
         return true;
     }
 
     // Star and key split
-    if (settings["starAndKeySplit"] && fadeout && (old.animation == starGrabAnimation || old.animation == starGrabAnimationSwim)) {
+    if (settings["starAndKeySplit"] && fadeout && (old.action == starGrabAction || old.action == starGrabActionSwim)) {
         return true;
     }
 
     // Course split
     if (settings["exceptDddSplit"]) {
         // Sometimes splitting after DDD is not desired
-        stageStars.Remove(dddMapId);
+        stageStars.Remove(dddStageIndex);
     }
-    if (settings["courseSplit"] && fadeout && stageStars.ContainsKey(old.mapId)) {
-        if (stageStars[old.mapId] == stageDone) {
+    if (settings["courseSplit"] && fadeout && stageStars.ContainsKey(old.stageIndex)) {
+        if (stageStars[old.stageIndex] == stageDone) {
             return true;
         }
     }
 
+    // 70 Star Stage Splits
+    if (settings["pss3Split"] && fadeout && old.stageIndex == pssStageIndex && old.action == starGrabAction && current.stars == 3) {
+        return true;
+    }
+    if (settings["wf9Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 9) {
+        return true;
+    }
+    if (settings["wf10Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 10) {
+        return true;
+    }
+    if (settings["ccm17Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 17) {
+        return true;
+    }
+    if (settings["ccm18Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 18) {
+        return true;
+    }
+    if (settings["bbh19Split"] && fadeout && old.stageIndex == bbhStageIndex && old.action == starGrabAction && current.stars == 19) {
+        return true;
+    }
+    if (settings["bbh20Split"] && fadeout && old.stageIndex == bbhStageIndex && old.action == starGrabAction && current.stars == 20) {
+        return true;
+    }
+    if (settings["ssl24Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 24) {
+        return true;
+    }
+    if (settings["lll30Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 30) {
+        return true;
+    }
+    if (settings["ddd33Split"] && fadeout && old.stageIndex == dddStageIndex && old.action == starGrabActionSwim && current.stars == 33) {
+        return true;
+    }
+    if (settings["wdw39Split"] && fadeout && old.stageIndex == wdwStageIndex && old.action == starGrabAction && current.stars == 39) {
+        return true;
+    }
+    if (settings["thi42Split"] && fadeout && old.stageIndex == thiStageIndex && old.action == starGrabAction && current.stars == 42) {
+        return true;
+    }
+    if (settings["ttm48Split"] && fadeout && old.stageIndex == ttmStageIndex && old.action == starGrabAction && current.stars == 48) {
+        return true;
+    }
+    if (settings["sl52Split"] && fadeout && old.stageIndex == slStageIndex && old.action == starGrabAction && current.stars == 52) {
+        return true;
+    }
+    if (settings["sl53Split"] && fadeout && old.stageIndex == slStageIndex && old.action == starGrabAction && current.stars == 53) {
+        return true;
+    }
+    if (settings["hmc58Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 58) {
+        return true;
+    }
+    if (settings["hmc59Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 59) {
+        return true;
+    }
+    if (settings["rr62Split"] && fadeout && old.stageIndex == rrStageIndex && old.action == starGrabAction && current.stars == 62) {
+        return true;
+    }
+    if (settings["rr63Split"] && fadeout && old.stageIndex == rrStageIndex && old.action == starGrabAction && current.stars == 63) {
+        return true;
+    }
+    if (settings["ttc69Split"] && fadeout && old.stageIndex == ttcStageIndex && old.action == starGrabAction && current.stars == 69) {
+        return true;
+    }
+    if (settings["ttc70Split"] && fadeout && old.stageIndex == ttcStageIndex && old.action == starGrabAction && current.stars == 70) {
+        return true;
+    }
+
     // 16 Star Stage Splits
-    if (settings["bob1Split"] && fadeout && old.mapId == bobMapId && old.animation == starGrabAnimation && current.stars == 1) {
+    if (settings["bob1Split"] && fadeout && old.stageIndex == bobStageIndex && old.action == starGrabAction && current.stars == 1) {
         return true;
     }
-    if (settings["wf4Split"] && fadeout && old.mapId == wfMapId && old.animation == starGrabAnimation && current.stars == 4) {
+    if (settings["wf4Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 4) {
         return true;
     }
-    if (settings["wf6Split"] && fadeout && old.mapId == wfMapId && old.animation == starGrabAnimation && current.stars == 6) {
+    if (settings["wf6Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 6) {
         return true;
     }
-    if (settings["ssl7Split"] && fadeout && old.mapId == sslMapId && old.animation == starGrabAnimation && current.stars == 7) {
+    if (settings["ssl7Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 7) {
         return true;
     }
-    if (settings["ccm8Split"] && fadeout && old.mapId == ccmMapId && old.animation == starGrabAnimation && current.stars == 8) {
+    if (settings["ccm8Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 8) {
         return true;
     }
-    if (settings["ssl11Split"] && fadeout && old.mapId == sslMapId && old.animation == starGrabAnimation && current.stars == 11) {
+    if (settings["ssl11Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 11) {
         return true;
     }
-    if (settings["lll11Split"] && fadeout && old.mapId == lllMapId && old.animation == starGrabAnimation && current.stars == 11) {
+    if (settings["lll11Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 11) {
         return true;
     }
-    if (settings["lll12Split"] && fadeout && old.mapId == lllMapId && old.animation == starGrabAnimation && current.stars == 12) {
+    if (settings["lll12Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 12) {
         return true;
     }
-    if (settings["hmc15Split"] && fadeout && old.mapId == hmcMapId && old.animation == starGrabAnimation && current.stars == 15) {
+    if (settings["hmc15Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 15) {
         return true;
     }
-    if (settings["ddd16Split"] && fadeout && old.mapId == dddMapId && old.animation == starGrabAnimation && current.stars == 16) {
+    if (settings["ddd16Split"] && fadeout && old.stageIndex == dddStageIndex && old.action == starGrabAction && current.stars == 16) {
         return true;
     }
 
     // Enter BitDW
-    if (settings["enterBitdwSplit"] && fadeout && current.mapId == bitdwMapId) {
+    if (settings["enterBitdwSplit"] && fadeout && current.stageIndex == bitdwStageIndex) {
         return true;
     }
 
     // Enter DDD
-    // Uses a different mechanic than the normal fadeout split because level changes at the same time as x-cam shows up, whereas mapId does not change until star select shows up.
-    if (settings["enterDddSplit"] && old.level != current.level && current.level == dddMapId) {
+    // Uses a different mechanic than the normal fadeout split because level changes at the same time as x-cam shows up, whereas stageIndex does not change until star select shows up.
+    if (settings["enterDddSplit"] && old.level != current.level && current.level == dddStageIndex) {
         return true;
     }
 
     // Enter BitS
-    if (settings["enterBitsSplit"] && fadeout && current.mapId == bitsMapId) {
+    if (settings["enterBitsSplit"] && fadeout && current.stageIndex == bitsStageIndex) {
         return true;
     }
 
     // BitDW
-    if (settings["bitdwSplit"] && fadeout && old.mapId == bow1MapId && old.animation == starGrabAnimation) {
+    if (settings["bitdwSplit"] && fadeout && old.stageIndex == bow1StageIndex && old.action == starGrabAction) {
         return true;
     }
 
     // HMC100
-    if (settings["hmc100Split"] && fadeout && old.mapId == hmcMapId && old.coins >= 100 && old.animation == starGrabAnimation) {
+    if (settings["hmc100Split"] && fadeout && old.stageIndex == hmcStageIndex && old.coins >= 100 && old.action == starGrabAction) {
         return true;
     }
 
     // Vanish Cap
-    if (settings["vanishCapSplit"] && fadeout && old.mapId == vcutmMapId && old.animation == starGrabAnimation) {
+    if (settings["vanishCapSplit"] && fadeout && old.stageIndex == vcutmStageIndex && old.action == starGrabAction) {
         return true;
     }
 
     // DDD100
-    if (settings["ddd100Split"] && fadeout && old.mapId == dddMapId && old.coins >= 100 && old.animation == starGrabAnimation) {
+    if (settings["ddd100Split"] && fadeout && old.stageIndex == dddStageIndex && old.coins >= 100 && old.action == starGrabAction) {
         return true;
     }
 
     // BitFS
-    if (settings["bitfsSplit"] && fadeout && old.mapId == bow2MapId && old.animation == starGrabAnimation) {
+    if (settings["bitfsSplit"] && fadeout && old.stageIndex == bow2StageIndex && old.action == starGrabAction) {
         return true;
     }
 
     // Upstairs door touch
     // Mask out the bits indicating that key 2 has been acquired but the upstairs door has not been touched.
     bool key2 = (current.keys & 32) == 32;
-    if (settings["upstairsDoorTouchSplit"] && current.animation == keyDoorTouchAnimation && old.animation != keyDoorTouchAnimation && key2) {
+    if (settings["upstairsDoorTouchSplit"] && current.action == keyDoorTouchAction && old.action != keyDoorTouchAction && key2) {
         return true;
     }
 
     // Wing Mario over the Rainbow
-    if (settings["wmotrSplit"] && fadeout && old.mapId == wmotrMapId && old.animation == starGrabAnimation) {
+    if (settings["wmotrSplit"] && fadeout && old.stageIndex == wmotrStageIndex && old.action == starGrabAction) {
         return true;
     }
 }
