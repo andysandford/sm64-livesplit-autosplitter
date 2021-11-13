@@ -194,11 +194,7 @@ startup {
 }
 
 start {
-    const int bobStageIndex = 9;
     if (settings["launchStart"] && current.stageIndex == vars.launchStageIndex && current.gameRunTime == 0) {
-        return true;
-    }
-    if (settings["basementSegmentStart"] && old.stageIndex == bobStageIndex && current.stageIndex != bobStageIndex) {
         return true;
     }
 }
@@ -206,9 +202,6 @@ start {
 reset {
     const int bobStageIndex = 9;
     if (settings["gameResetReset"] && (current.stageIndex == vars.launchStageIndex && old.stageIndex != vars.launchStageIndex || (current.stageIndex == vars.launchStageIndex && old.stageIndex == vars.launchStageIndex && current.gameRunTime < old.gameRunTime))) {
-        return true;
-    }
-    if (settings["basementSegmentStart"] && current.stageIndex == bobStageIndex) {
         return true;
     }
 }
