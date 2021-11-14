@@ -1,5 +1,5 @@
 // Memory of JP Mupen64Plus version
-state("mupen64plus-ui-console", "JP Mupen64Plus") {
+state("mupen64plus-ui-console", "JP") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
     byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x339EDA;
@@ -25,7 +25,7 @@ state("mupen64plus-ui-console", "JP Mupen64Plus") {
 }
 
 // Memory of JP Project64 version
-state("project64", "JP Project64") {
+state("project64", "JP") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32C640;
     byte stageIndex : "Project64.exe", 0xD6A1C, 0x32CE9A;
     byte level : "Project64.exe", 0xD6A1C, 0x339EDA;
@@ -51,7 +51,7 @@ state("project64", "JP Project64") {
 }
 
 // Memory of US Mupen64Plus version
-state("mupen64plus-ui-console", "US Mupen64Plus") {
+state("mupen64plus-ui-console", "US") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32D580;
     byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32DDFA;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x33B24A;
@@ -77,7 +77,7 @@ state("mupen64plus-ui-console", "US Mupen64Plus") {
 }
 
 // Memory of US Project64 version
-state("project64", "US Project64") {
+state("project64", "US") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32D580;
     byte stageIndex : "Project64.exe", 0xD6A1C, 0x32DDFA;
     byte level : "Project64.exe", 0xD6A1C, 0x33B24A;
@@ -104,21 +104,13 @@ state("project64", "US Project64") {
 
 init {
     // Version identifier
-    if (settings["gameVerJPM64P"])
+    if (settings["gameVerJP"])
     {
-        version = "JP Mupen64Plus";
+        version = "JP";
     }
-    if (settings["gameVerJPPJ64"])
+    if (settings["gameVerUS"])
     {
-        version = "JP Project64";
-    }
-    if (settings["gameVerUSM64P"])
-    {
-        version = "US Mupen64Plus";
-    }
-    if (settings["gameVerUSPJ64"])
-    {
-        version = "US Project64";
+        version = "US";
     }
 
     // Global variables
@@ -187,10 +179,8 @@ startup {
     settings.Add("gameResetReset", false, "Reset on Game Reset", "settingsReset");
 
     settings.Add("gameVersion", true, "Game Version (requires LiveSplit restart)");
-    settings.Add("gameVerJPM64P", false, "JP Mupen64Plus", "gameVersion");
-    settings.Add("gameVerJPPJ64", true, "JP Project64", "gameVersion");
-    settings.Add("gameVerUSM64P", false, "US Mupen64Plus", "gameVersion");
-    settings.Add("gameVerUSPJ64", true, "US Project64", "gameVersion");
+    settings.Add("gameVerJP", false, "JP", "gameVersion");
+    settings.Add("gameVerUS", false, "US", "gameVersion");
 }
 
 start {
