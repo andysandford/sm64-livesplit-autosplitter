@@ -370,7 +370,9 @@ split {
     }
 
     // Enter BitDW
-    if (settings["enterBitdwSplit"] && fadeout && current.stageIndex == bitdwStageIndex) {
+    // Mask out the bits indicating that key 1 has been acquired so that we don't also split on bitdw re-entry.
+    bool key1 = (current.keys & 16) == 16;
+    if (settings["enterBitdwSplit"] && fadeout && current.stageIndex == bitdwStageIndex && !key1) {
         return true;
     }
 
