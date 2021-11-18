@@ -1,6 +1,10 @@
 # Description
 * Splits on fadeout
-* Aims to support all common split options. If something is missing please let me know.
+* Supports Project64 1.6 and Mupen64Plus
+* Aims to support all common split options. If something is missing please let me (AndySandford) know.
+
+# You should also check out [aglab2's autosplitter](https://github.com/aglab2/LiveSplitAutoSplitters)
+It might have some features that this splitter does not.
 
 # How to use:  
 Download the file called [`LiveSplit.SM64.asl`](https://github.com/andysandford/sm64-livesplit-autosplitter/releases/download/v1/LiveSplit.SM64.asl). Edit your LiveSplit layout and add the `Scriptable Auto Splitter` component.  
