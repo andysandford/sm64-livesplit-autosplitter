@@ -1,7 +1,6 @@
 // Memory of JP Mupen64Plus version
 state("mupen64plus-ui-console", "JP") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
-    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x339EDA;
     ushort action : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207B08;
@@ -27,7 +26,6 @@ state("mupen64plus-ui-console", "JP") {
 // Memory of JP Project64 version
 state("project64", "JP") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32C640;
-    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32CE9A;
     byte level : "Project64.exe", 0xD6A1C, 0x339EDA;
     ushort action : "Project64.exe", 0xD6A1C, 0x339E0C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207B08;
@@ -53,7 +51,6 @@ state("project64", "JP") {
 // Memory of US Mupen64Plus version
 state("mupen64plus-ui-console", "US") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32D580;
-    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32DDFA;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x33B24A;
     ushort action : "mupen64plus.dll", 0x3231C1C, 0x33B17C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207708;
@@ -79,7 +76,6 @@ state("mupen64plus-ui-console", "US") {
 // Memory of US Project64 version
 state("project64", "US") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32D580;
-    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32DDFA;
     byte level : "Project64.exe", 0xD6A1C, 0x33B24A;
     ushort action : "Project64.exe", 0xD6A1C, 0x33B17C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207708;
@@ -114,7 +110,7 @@ init {
     }
 
     // Global variables
-    vars.launchStageIndex = 1;
+    vars.launchLevel = 0;
 }
 
 startup {
@@ -184,42 +180,42 @@ startup {
 }
 
 start {
-    if (settings["launchStart"] && current.stageIndex == vars.launchStageIndex && current.gameRunTime == 0) {
+    if (settings["launchStart"] && current.level == vars.launchLevel && current.gameRunTime == 0) {
         return true;
     }
 }
 
 reset {
-    if (settings["gameResetReset"] && (current.stageIndex == vars.launchStageIndex && old.stageIndex != vars.launchStageIndex || (current.stageIndex == vars.launchStageIndex && old.stageIndex == vars.launchStageIndex && current.gameRunTime < old.gameRunTime))) {
+    if (settings["gameResetReset"] && (current.level == vars.launchLevel && old.level != vars.launchLevel || (current.level == vars.launchLevel && old.level == vars.launchLevel && current.gameRunTime < old.gameRunTime))) {
         return true;
     }
 }
 
 split {
     // Map IDs
-    const int bitdwStageIndex = 17;
-    const int bitsStageIndex = 21;
-    const int bow1StageIndex = 30;
-    const int bow2StageIndex = 33;
-    const int bow3StageIndex = 34;
-    const int vcutmStageIndex = 18;
-    const int wmotrStageIndex = 31;
-    const int pssStageIndex = 27;
-    const int bobStageIndex = 9;
-    const int wfStageIndex = 24;
-    const int jrbStageIndex = 12;
-    const int ccmStageIndex = 5;
-    const int bbhStageIndex = 4;
-    const int hmcStageIndex = 7;
-    const int lllStageIndex = 22;
-    const int sslStageIndex = 8;
-    const int dddStageIndex = 23;
-    const int slStageIndex = 10;
-    const int wdwStageIndex = 11;
-    const int ttmStageIndex = 36;
-    const int thiStageIndex = 13;
-    const int ttcStageIndex = 14;
-    const int rrStageIndex = 15;
+    const int bitdwLevel = 17;
+    const int bitsLevel = 21;
+    const int bow1Level = 30;
+    const int bow2Level = 33;
+    const int bow3Level = 34;
+    const int vcutmLevel = 18;
+    const int wmotrLevel = 31;
+    const int pssLevel = 27;
+    const int bobLevel = 9;
+    const int wfLevel = 24;
+    const int jrbLevel = 12;
+    const int ccmLevel = 5;
+    const int bbhLevel = 4;
+    const int hmcLevel = 7;
+    const int lllLevel = 22;
+    const int sslLevel = 8;
+    const int dddLevel = 23;
+    const int slLevel = 10;
+    const int wdwLevel = 11;
+    const int ttmLevel = 36;
+    const int thiLevel = 13;
+    const int ttcLevel = 14;
+    const int rrLevel = 15;
 
     // actions
     const int starGrabAction = 4866;
@@ -233,182 +229,182 @@ split {
     // Record stars for each stage
     var stageStars = new Dictionary<int, int>();
     // We mask out the 8th bit since it does not represent a star
-    stageStars[bobStageIndex] = current.bobStars & stageDone;
-    stageStars[wfStageIndex] = current.wfStars & stageDone;
-    stageStars[jrbStageIndex] = current.jrbStars & stageDone;
-    stageStars[ccmStageIndex] = current.ccmStars & stageDone;
-    stageStars[bbhStageIndex] = current.bbhStars & stageDone;
-    stageStars[hmcStageIndex] = current.hmcStars & stageDone;
-    stageStars[lllStageIndex] = current.lllStars & stageDone;
-    stageStars[sslStageIndex] = current.sslStars & stageDone;
-    stageStars[dddStageIndex] = current.dddStars & stageDone;
-    stageStars[slStageIndex] = current.slStars & stageDone;
-    stageStars[wdwStageIndex] = current.wdwStars & stageDone;
-    stageStars[ttmStageIndex] = current.ttmStars & stageDone;
-    stageStars[thiStageIndex] = current.thiStars & stageDone;
-    stageStars[ttcStageIndex] = current.ttcStars & stageDone;
-    stageStars[rrStageIndex] = current.rrStars & stageDone;
+    stageStars[bobLevel] = current.bobStars & stageDone;
+    stageStars[wfLevel] = current.wfStars & stageDone;
+    stageStars[jrbLevel] = current.jrbStars & stageDone;
+    stageStars[ccmLevel] = current.ccmStars & stageDone;
+    stageStars[bbhLevel] = current.bbhStars & stageDone;
+    stageStars[hmcLevel] = current.hmcStars & stageDone;
+    stageStars[lllLevel] = current.lllStars & stageDone;
+    stageStars[sslLevel] = current.sslStars & stageDone;
+    stageStars[dddLevel] = current.dddStars & stageDone;
+    stageStars[slLevel] = current.slStars & stageDone;
+    stageStars[wdwLevel] = current.wdwStars & stageDone;
+    stageStars[ttmLevel] = current.ttmStars & stageDone;
+    stageStars[thiLevel] = current.thiStars & stageDone;
+    stageStars[ttcLevel] = current.ttcStars & stageDone;
+    stageStars[rrLevel] = current.rrStars & stageDone;
 
-    bool fadeout = old.stageIndex != current.stageIndex;
+    // Fadeout or portrait/level entry.
+    bool levelChange = old.level != current.level;
 
     // Game end (bowser 3 big star)
-    if (current.action == gameEndAction && old.action != gameEndAction && current.stageIndex == bow3StageIndex) {
+    if (current.action == gameEndAction && old.action != gameEndAction && current.level == bow3Level) {
         return true;
     }
 
     // Star and key split
-    if (settings["starAndKeySplit"] && fadeout && (old.action == starGrabAction || old.action == starGrabActionSwim)) {
+    if (settings["starAndKeySplit"] && levelChange && (old.action == starGrabAction || old.action == starGrabActionSwim)) {
         return true;
     }
 
     // Course split
     if (settings["exceptDddSplit"]) {
         // Sometimes splitting after DDD is not desired
-        stageStars.Remove(dddStageIndex);
+        stageStars.Remove(dddLevel);
     }
-    if (settings["courseSplit"] && fadeout && stageStars.ContainsKey(old.stageIndex)) {
-        if (stageStars[old.stageIndex] == stageDone) {
+    if (settings["courseSplit"] && levelChange && stageStars.ContainsKey(old.level)) {
+        if (stageStars[old.level] == stageDone) {
             return true;
         }
     }
 
     // 70 Star Stage Splits
-    if (settings["pss3Split"] && fadeout && old.stageIndex == pssStageIndex && old.action == starGrabAction && current.stars == 3) {
+    if (settings["pss3Split"] && levelChange && old.level == pssLevel && old.action == starGrabAction && current.stars == 3) {
         return true;
     }
-    if (settings["wf9Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 9) {
+    if (settings["wf9Split"] && levelChange && old.level == wfLevel && old.action == starGrabAction && current.stars == 9) {
         return true;
     }
-    if (settings["wf10Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 10) {
+    if (settings["wf10Split"] && levelChange && old.level == wfLevel && old.action == starGrabAction && current.stars == 10) {
         return true;
     }
-    if (settings["ccm17Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 17) {
+    if (settings["ccm17Split"] && levelChange && old.level == ccmLevel && old.action == starGrabAction && current.stars == 17) {
         return true;
     }
-    if (settings["ccm18Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 18) {
+    if (settings["ccm18Split"] && levelChange && old.level == ccmLevel && old.action == starGrabAction && current.stars == 18) {
         return true;
     }
-    if (settings["bbh19Split"] && fadeout && old.stageIndex == bbhStageIndex && old.action == starGrabAction && current.stars == 19) {
+    if (settings["bbh19Split"] && levelChange && old.level == bbhLevel && old.action == starGrabAction && current.stars == 19) {
         return true;
     }
-    if (settings["bbh20Split"] && fadeout && old.stageIndex == bbhStageIndex && old.action == starGrabAction && current.stars == 20) {
+    if (settings["bbh20Split"] && levelChange && old.level == bbhLevel && old.action == starGrabAction && current.stars == 20) {
         return true;
     }
-    if (settings["ssl24Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 24) {
+    if (settings["ssl24Split"] && levelChange && old.level == sslLevel && old.action == starGrabAction && current.stars == 24) {
         return true;
     }
-    if (settings["lll30Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 30) {
+    if (settings["lll30Split"] && levelChange && old.level == lllLevel && old.action == starGrabAction && current.stars == 30) {
         return true;
     }
-    if (settings["ddd33Split"] && fadeout && old.stageIndex == dddStageIndex && old.action == starGrabActionSwim && current.stars == 33) {
+    if (settings["ddd33Split"] && levelChange && old.level == dddLevel && old.action == starGrabActionSwim && current.stars == 33) {
         return true;
     }
-    if (settings["wdw39Split"] && fadeout && old.stageIndex == wdwStageIndex && old.action == starGrabAction && current.stars == 39) {
+    if (settings["wdw39Split"] && levelChange && old.level == wdwLevel && old.action == starGrabAction && current.stars == 39) {
         return true;
     }
-    if (settings["thi42Split"] && fadeout && old.stageIndex == thiStageIndex && old.action == starGrabAction && current.stars == 42) {
+    if (settings["thi42Split"] && levelChange && old.level == thiLevel && old.action == starGrabAction && current.stars == 42) {
         return true;
     }
-    if (settings["ttm48Split"] && fadeout && old.stageIndex == ttmStageIndex && old.action == starGrabAction && current.stars == 48) {
+    if (settings["ttm48Split"] && levelChange && old.level == ttmLevel && old.action == starGrabAction && current.stars == 48) {
         return true;
     }
-    if (settings["sl52Split"] && fadeout && old.stageIndex == slStageIndex && old.action == starGrabAction && current.stars == 52) {
+    if (settings["sl52Split"] && levelChange && old.level == slLevel && old.action == starGrabAction && current.stars == 52) {
         return true;
     }
-    if (settings["sl53Split"] && fadeout && old.stageIndex == slStageIndex && old.action == starGrabAction && current.stars == 53) {
+    if (settings["sl53Split"] && levelChange && old.level == slLevel && old.action == starGrabAction && current.stars == 53) {
         return true;
     }
-    if (settings["hmc58Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 58) {
+    if (settings["hmc58Split"] && levelChange && old.level == hmcLevel && old.action == starGrabAction && current.stars == 58) {
         return true;
     }
-    if (settings["hmc59Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 59) {
+    if (settings["hmc59Split"] && levelChange && old.level == hmcLevel && old.action == starGrabAction && current.stars == 59) {
         return true;
     }
-    if (settings["rr62Split"] && fadeout && old.stageIndex == rrStageIndex && old.action == starGrabAction && current.stars == 62) {
+    if (settings["rr62Split"] && levelChange && old.level == rrLevel && old.action == starGrabAction && current.stars == 62) {
         return true;
     }
-    if (settings["rr63Split"] && fadeout && old.stageIndex == rrStageIndex && old.action == starGrabAction && current.stars == 63) {
+    if (settings["rr63Split"] && levelChange && old.level == rrLevel && old.action == starGrabAction && current.stars == 63) {
         return true;
     }
-    if (settings["ttc69Split"] && fadeout && old.stageIndex == ttcStageIndex && old.action == starGrabAction && current.stars == 69) {
+    if (settings["ttc69Split"] && levelChange && old.level == ttcLevel && old.action == starGrabAction && current.stars == 69) {
         return true;
     }
-    if (settings["ttc70Split"] && fadeout && old.stageIndex == ttcStageIndex && old.action == starGrabAction && current.stars == 70) {
+    if (settings["ttc70Split"] && levelChange && old.level == ttcLevel && old.action == starGrabAction && current.stars == 70) {
         return true;
     }
 
     // 16 Star Stage Splits
-    if (settings["bob1Split"] && fadeout && old.stageIndex == bobStageIndex && old.action == starGrabAction && current.stars == 1) {
+    if (settings["bob1Split"] && levelChange && old.level == bobLevel && old.action == starGrabAction && current.stars == 1) {
         return true;
     }
-    if (settings["wf4Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 4) {
+    if (settings["wf4Split"] && levelChange && old.level == wfLevel && old.action == starGrabAction && current.stars == 4) {
         return true;
     }
-    if (settings["wf6Split"] && fadeout && old.stageIndex == wfStageIndex && old.action == starGrabAction && current.stars == 6) {
+    if (settings["wf6Split"] && levelChange && old.level == wfLevel && old.action == starGrabAction && current.stars == 6) {
         return true;
     }
-    if (settings["ssl7Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 7) {
+    if (settings["ssl7Split"] && levelChange && old.level == sslLevel && old.action == starGrabAction && current.stars == 7) {
         return true;
     }
-    if (settings["ccm8Split"] && fadeout && old.stageIndex == ccmStageIndex && old.action == starGrabAction && current.stars == 8) {
+    if (settings["ccm8Split"] && levelChange && old.level == ccmLevel && old.action == starGrabAction && current.stars == 8) {
         return true;
     }
-    if (settings["ssl11Split"] && fadeout && old.stageIndex == sslStageIndex && old.action == starGrabAction && current.stars == 11) {
+    if (settings["ssl11Split"] && levelChange && old.level == sslLevel && old.action == starGrabAction && current.stars == 11) {
         return true;
     }
-    if (settings["lll11Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 11) {
+    if (settings["lll11Split"] && levelChange && old.level == lllLevel && old.action == starGrabAction && current.stars == 11) {
         return true;
     }
-    if (settings["lll12Split"] && fadeout && old.stageIndex == lllStageIndex && old.action == starGrabAction && current.stars == 12) {
+    if (settings["lll12Split"] && levelChange && old.level == lllLevel && old.action == starGrabAction && current.stars == 12) {
         return true;
     }
-    if (settings["hmc15Split"] && fadeout && old.stageIndex == hmcStageIndex && old.action == starGrabAction && current.stars == 15) {
+    if (settings["hmc15Split"] && levelChange && old.level == hmcLevel && old.action == starGrabAction && current.stars == 15) {
         return true;
     }
-    if (settings["ddd16Split"] && fadeout && old.stageIndex == dddStageIndex && old.action == starGrabAction && current.stars == 16) {
+    if (settings["ddd16Split"] && levelChange && old.level == dddLevel && old.action == starGrabAction && current.stars == 16) {
         return true;
     }
 
     // Enter BitDW
     // Mask out the bits indicating that key 1 has been acquired so that we don't also split on bitdw re-entry.
     bool key1 = (current.keys & 16) == 16;
-    if (settings["enterBitdwSplit"] && fadeout && current.stageIndex == bitdwStageIndex && !key1) {
+    if (settings["enterBitdwSplit"] && levelChange && current.level == bitdwLevel && !key1) {
         return true;
     }
 
     // Enter DDD
-    // Uses a different mechanic than the normal fadeout split because level changes at the same time as x-cam shows up, whereas stageIndex does not change until star select shows up.
-    if (settings["enterDddSplit"] && old.level != current.level && current.level == dddStageIndex) {
+    if (settings["enterDddSplit"] && levelChange && current.level == dddLevel) {
         return true;
     }
 
     // Enter BitS
-    if (settings["enterBitsSplit"] && fadeout && current.stageIndex == bitsStageIndex) {
+    if (settings["enterBitsSplit"] && levelChange && current.level == bitsLevel) {
         return true;
     }
 
     // BitDW
-    if (settings["bitdwSplit"] && fadeout && old.stageIndex == bow1StageIndex && old.action == starGrabAction) {
+    if (settings["bitdwSplit"] && levelChange && old.level == bow1Level && old.action == starGrabAction) {
         return true;
     }
 
     // HMC100
-    if (settings["hmc100Split"] && fadeout && old.stageIndex == hmcStageIndex && old.coins >= 100 && old.action == starGrabAction) {
+    if (settings["hmc100Split"] && levelChange && old.level == hmcLevel && old.coins >= 100 && old.action == starGrabAction) {
         return true;
     }
 
     // Vanish Cap
-    if (settings["vanishCapSplit"] && fadeout && old.stageIndex == vcutmStageIndex && old.action == starGrabAction) {
+    if (settings["vanishCapSplit"] && levelChange && old.level == vcutmLevel && old.action == starGrabAction) {
         return true;
     }
 
     // DDD100
-    if (settings["ddd100Split"] && fadeout && old.stageIndex == dddStageIndex && old.coins >= 100 && old.action == starGrabAction) {
+    if (settings["ddd100Split"] && levelChange && old.level == dddLevel && old.coins >= 100 && old.action == starGrabAction) {
         return true;
     }
 
     // BitFS
-    if (settings["bitfsSplit"] && fadeout && old.stageIndex == bow2StageIndex && old.action == starGrabAction) {
+    if (settings["bitfsSplit"] && levelChange && old.level == bow2Level && old.action == starGrabAction) {
         return true;
     }
 
@@ -420,7 +416,7 @@ split {
     }
 
     // Wing Mario over the Rainbow
-    if (settings["wmotrSplit"] && fadeout && old.stageIndex == wmotrStageIndex && old.action == starGrabAction) {
+    if (settings["wmotrSplit"] && levelChange && old.level == wmotrLevel && old.action == starGrabAction) {
         return true;
     }
 }
