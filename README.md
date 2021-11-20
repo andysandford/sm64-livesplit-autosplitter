@@ -1,7 +1,7 @@
 # Description
 * Splits on fadeout
 * Supports Project64 1.6 and Mupen64Plus
-* Aims to support all common split options. If something is missing please let me (AndySandford) know.
+* Aims to support all common split options. If something is broken or missing please let me (AndySandford) know.
 
 # You should also check out [aglab2's autosplitter](https://github.com/aglab2/LiveSplitAutoSplitters)
 It might have some features that this splitter does not.
@@ -20,8 +20,14 @@ Make sure you select the correct game version and emulator (JP Mupen64Plus or JP
 
 If everything has been configured correctly LiveSplit should start when you start or reset your emulator.
 
+## Start Settings
+The splitter can either start the timer when the game starts normally, but it can be inconsistent. The splitter therefore supports starting on the first frame of the logo. It is a lot more consistent but you need to configure LiveSplit to start at 1.33s.
+
+![image](https://user-images.githubusercontent.com/93740337/142740503-b6f1ccd0-fcee-4426-93d3-0b269060df5d.png)  
+
 # Known issues
-Doing Metal Cap as the last star of HMC is not supported. If you do this then the splitter will trigger after the last proper star of HMC, causing a split one star too early.
+* Doing Metal Cap as the last star of HMC is not supported. If you do this then the splitter will trigger after the last proper star of HMC, causing a split one star too early.
+* Splits can trigger multiple times. For example if you die in BitS and re-enter the stage it will split again.
 
 # Example configs
 ## 16 Star No LBLJ
