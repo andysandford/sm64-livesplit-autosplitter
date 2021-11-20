@@ -1,7 +1,9 @@
 // Memory of JP Mupen64Plus version
 state("mupen64plus-ui-console", "JP") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
+    uint globalTimer : "mupen64plus.dll", 0x3231C1C, 0x32C694;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x339EDA;
+    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32CE9A;
     ushort action : "mupen64plus.dll", 0x3231C1C, 0x339E0C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207B08;
     short stars : "mupen64plus.dll", 0x3231C1C, 0x339EA8;
@@ -26,7 +28,9 @@ state("mupen64plus-ui-console", "JP") {
 // Memory of JP Project64 version
 state("project64", "JP") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32C640;
+    uint globalTimer : "Project64.exe", 0xD6A1C, 0x32C694;
     byte level : "Project64.exe", 0xD6A1C, 0x339EDA;
+    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32CE9A;
     ushort action : "Project64.exe", 0xD6A1C, 0x339E0C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207B08;
     short stars : "Project64.exe", 0xD6A1C, 0x339EA8;
@@ -51,7 +55,9 @@ state("project64", "JP") {
 // Memory of US Mupen64Plus version
 state("mupen64plus-ui-console", "US") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32D580;
+    uint globalTimer : "mupen64plus.dll", 0x3231C1C, 0x32D5D4;
     byte level : "mupen64plus.dll", 0x3231C1C, 0x33B24A;
+    byte stageIndex : "mupen64plus.dll", 0x3231C1C, 0x32DDFA;
     ushort action : "mupen64plus.dll", 0x3231C1C, 0x33B17C;
     byte keys : "mupen64plus.dll", 0x3231C1C, 0x207708;
     short stars : "mupen64plus.dll", 0x3231C1C, 0x33B218;
@@ -76,7 +82,9 @@ state("mupen64plus-ui-console", "US") {
 // Memory of US Project64 version
 state("project64", "US") {
     uint gameRunTime : "Project64.exe", 0xD6A1C, 0x32D580;
+    uint globalTimer : "Project64.exe", 0xD6A1C, 0x32D5D4;
     byte level : "Project64.exe", 0xD6A1C, 0x33B24A;
+    byte stageIndex : "Project64.exe", 0xD6A1C, 0x32DDFA;
     ushort action : "Project64.exe", 0xD6A1C, 0x33B17C;
     byte keys : "Project64.exe", 0xD6A1C, 0x207708;
     short stars : "Project64.exe", 0xD6A1C, 0x33B218;
@@ -108,14 +116,12 @@ init {
     {
         version = "US";
     }
-
-    // Global variables
-    vars.launchLevel = 0;
 }
 
 startup {
     settings.Add("settingsStart", true, "Start Settings");
     settings.Add("launchStart", false, "Start on Game Launch", "settingsStart");
+    settings.Add("logoStart", false, "Start on first frame of logo (1.33s. More consistent)", "settingsStart");
 
     settings.Add("settingsSplit", true, "Split Settings");
     settings.Add("starAndKeySplit", false, "Every star and key", "settingsSplit");
@@ -180,13 +186,16 @@ startup {
 }
 
 start {
-    if (settings["launchStart"] && current.level == vars.launchLevel && current.gameRunTime == 0) {
+    if (settings["launchStart"] && current.stageIndex == 1 && current.gameRunTime < old.gameRunTime) {
+        return true;
+    }
+    if (settings["logoStart"] && current.globalTimer == 4) {
         return true;
     }
 }
 
 reset {
-    if (settings["gameResetReset"] && (current.level == vars.launchLevel && old.level != vars.launchLevel || (current.level == vars.launchLevel && old.level == vars.launchLevel && current.gameRunTime < old.gameRunTime))) {
+    if (settings["gameResetReset"] && current.stageIndex == 1 && current.gameRunTime < old.gameRunTime) {
         return true;
     }
 }
