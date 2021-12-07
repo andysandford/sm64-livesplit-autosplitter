@@ -186,6 +186,8 @@ startup {
 }
 
 start {
+	vars.bitdwEntered = false;
+	vars.bitsEntered = false;
     if (settings["launchStart"] && current.stageIndex == 1 && current.gameRunTime < old.gameRunTime) {
         return true;
     }
@@ -376,9 +378,8 @@ split {
     }
 
     // Enter BitDW
-    // Mask out the bits indicating that key 1 has been acquired so that we don't also split on bitdw re-entry.
-    bool key1 = (current.keys & 16) == 16;
-    if (settings["enterBitdwSplit"] && levelChange && current.level == bitdwLevel && !key1) {
+    if (settings["enterBitdwSplit"] && levelChange && current.level == bitdwLevel && !vars.bitdwEntered) {
+        vars.bitdwEntered = true;
         return true;
     }
 
@@ -388,7 +389,8 @@ split {
     }
 
     // Enter BitS
-    if (settings["enterBitsSplit"] && levelChange && current.level == bitsLevel) {
+    if (settings["enterBitsSplit"] && levelChange && current.level == bitsLevel && !vars.bitsEntered) {
+	    vars.bitsEntered = true;
         return true;
     }
 
