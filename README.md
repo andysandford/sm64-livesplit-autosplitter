@@ -34,6 +34,10 @@ The splitter can either start the timer when the game starts normally, but it ca
 ![image](https://user-images.githubusercontent.com/93740337/140610599-b6e1af1d-a660-432c-b458-5a6a1910c54f.png)
 ![image](https://user-images.githubusercontent.com/93740337/140610533-80ab2ba2-acc3-4bca-abfd-92ff8c8c87fe.png)
 
+## 16 Star No LBLJ Beginner (No BitDW Red Coins)
+![16StarNoLBLJBeginnerSettings](https://user-images.githubusercontent.com/60489413/153927050-a6f17ecb-ba50-439c-b816-a242d1e908d8.png)
+![image](https://user-images.githubusercontent.com/60489413/153926120-457c8342-c545-43c2-a6f2-dbd519958b92.png)
+
 ## 16 Star LBLJ
 ![image](https://user-images.githubusercontent.com/93740337/140610687-a99dfa21-d8a3-408a-9c08-6998235c5276.png)
 ![image](https://user-images.githubusercontent.com/93740337/140610660-d1bfe335-eabd-4812-91ec-80de64a46dfb.png)
