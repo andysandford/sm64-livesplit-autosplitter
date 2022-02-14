@@ -176,6 +176,10 @@ startup {
     settings.Add("ccm8Split", false, "CCM (8)", "stage16NoLbljSplit");
     settings.Add("ssl11Split", false, "SSL (11)", "stage16NoLbljSplit");
     settings.Add("lll12Split", false, "LLL (12)", "stage16NoLbljSplit");
+	
+	settings.Add("stage16NoLbljBeginnerSplit", false, "16 Star No LBLJ Beginner Stage Splits (No BitDW Red Coins)", "stage16Split");
+    settings.Add("ssl10BeginnerSplit", false, "SSL (10)", "stage16NoLbljBeginnerSplit");
+    settings.Add("lll11BeginnerSplit", false, "LLL (11)", "stage16NoLbljBeginnerSplit");
 
     settings.Add("settingsReset", true, "Reset Settings");
     settings.Add("gameResetReset", false, "Reset on Game Reset", "settingsReset");
@@ -374,6 +378,14 @@ split {
         return true;
     }
     if (settings["ddd16Split"] && levelChange && old.level == dddLevel && old.action == starGrabAction && current.stars == 16) {
+        return true;
+    }
+	
+	//16 Star Stage Beginner Splits
+	if (settings["ssl10BeginnerSplit"] && levelChange && old.level == sslLevel && old.action == starGrabAction && current.stars == 10) {
+        return true;
+    }
+    if (settings["lll11BeginnerSplit"] && levelChange && old.level == lllLevel && old.action == starGrabAction && current.stars == 11) {
         return true;
     }
 
