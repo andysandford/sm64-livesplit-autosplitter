@@ -7,7 +7,7 @@
 It might have some features that this splitter does not.
 
 # How to use:  
-Download the file called [`LiveSplit.SM64.asl`](https://github.com/andysandford/sm64-livesplit-autosplitter/releases/download/v1.2/LiveSplit.SM64.asl). Edit your LiveSplit layout and add the `Scriptable Auto Splitter` component.  
+Download the file called [`LiveSplit.SM64.asl`](https://github.com/andysandford/sm64-livesplit-autosplitter/releases/download/v1.3/LiveSplit.SM64.asl). Edit your LiveSplit layout and add the `Scriptable Auto Splitter` component.  
 ![image](https://user-images.githubusercontent.com/93740337/140424715-53cea1e5-8a96-4573-922e-bf0e6dccd39b.png)  
 
 Then go to `Layout Settings` and look at the `Scriptable Auto Splitter` tab.
