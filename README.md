@@ -4,7 +4,7 @@
 * Aims to support all common split options. If something is broken or missing please let me (AndySandford) know.
 
 # You should also check out [aglab2's autosplitter](https://github.com/aglab2/LiveSplitAutoSplitters)
-It might have some features that this splitter does not.
+It just reads the split names so you don't have to edit configs or even .asl files to add new routes. That means you just write your splits file (with the correct format) and it will split without you having to edit any configs. Whereas my splitter requires you to first configure your route. My splitter also requires you to edit the .asl files if you want to add new routes. When I first wrote this splitter I wasn't aware of aglab2's splitter nor the more advanced features of the ASL language, which is my splitter is the way it is. I'm not planning to rewrite this splitter because that would make it more or less identical to aglab2's splitter. I will however continue to maintain it, fix bugs and add new routes should anyone request it. (You might say that one advantage of my splitter is that you can choose whatever split names you want ;))
 
 # How to use:  
 Download the file called [`LiveSplit.SM64.asl`](https://github.com/andysandford/sm64-livesplit-autosplitter/releases/download/v1.3/LiveSplit.SM64.asl). Edit your LiveSplit layout and add the `Scriptable Auto Splitter` component.  
