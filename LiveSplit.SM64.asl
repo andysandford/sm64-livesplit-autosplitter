@@ -1,3 +1,57 @@
+// Memory of JP Rosalie's Mupen GUI version
+state("RMG", "JP") {
+    uint gameRunTime : "mupen64plus.dll", 0x0CC658, 0x32C640;
+    uint globalTimer : "mupen64plus.dll", 0x0CC658, 0x32C694;
+    byte level : "mupen64plus.dll", 0x0CC658, 0x339EDA;
+    byte stageIndex : "mupen64plus.dll", 0x0CC658, 0x32CE9A;
+    ushort action : "mupen64plus.dll", 0x0CC658, 0x339E0C;
+    byte keys : "mupen64plus.dll", 0x0CC658, 0x207B08;
+    short stars : "mupen64plus.dll", 0x0CC658, 0x339EA8;
+    byte coins : "mupen64plus.dll", 0x0CC658, 0x339EAA;
+    byte bobStars : "mupen64plus.dll", 0x0CC658, 0x207B0F;
+    byte wfStars : "mupen64plus.dll", 0x0CC658, 0x207B0E;
+    byte jrbStars : "mupen64plus.dll", 0x0CC658, 0x207B0D;
+    byte ccmStars : "mupen64plus.dll", 0x0CC658, 0x207B0C;
+    byte bbhStars : "mupen64plus.dll", 0x0CC658, 0x207B13;
+    byte hmcStars : "mupen64plus.dll", 0x0CC658, 0x207B12;
+    byte lllStars : "mupen64plus.dll", 0x0CC658, 0x207B11;
+    byte sslStars : "mupen64plus.dll", 0x0CC658, 0x207B10;
+    byte dddStars : "mupen64plus.dll", 0x0CC658, 0x207B17;
+    byte slStars : "mupen64plus.dll", 0x0CC658, 0x207B16;
+    byte wdwStars : "mupen64plus.dll", 0x0CC658, 0x207B15;
+    byte ttmStars : "mupen64plus.dll", 0x0CC658, 0x207B14;
+    byte thiStars : "mupen64plus.dll", 0x0CC658, 0x207B1B;
+    byte ttcStars : "mupen64plus.dll", 0x0CC658, 0x207B1A;
+    byte rrStars : "mupen64plus.dll", 0x0CC658, 0x207B19;
+}
+
+// Memory of JP m64py version
+state("m64py", "JP") {
+    uint gameRunTime : "mupen64plus.dll", 0x320100, 0x32C640;
+    uint globalTimer : "mupen64plus.dll", 0x320100, 0x32C694;
+    byte level : "mupen64plus.dll", 0x320100, 0x339EDA;
+    byte stageIndex : "mupen64plus.dll", 0x320100, 0x32CE9A;
+    ushort action : "mupen64plus.dll", 0x320100, 0x339E0C;
+    byte keys : "mupen64plus.dll", 0x320100, 0x207B08;
+    short stars : "mupen64plus.dll", 0x320100, 0x339EA8;
+    byte coins : "mupen64plus.dll", 0x320100, 0x339EAA;
+    byte bobStars : "mupen64plus.dll", 0x320100, 0x207B0F;
+    byte wfStars : "mupen64plus.dll", 0x320100, 0x207B0E;
+    byte jrbStars : "mupen64plus.dll", 0x320100, 0x207B0D;
+    byte ccmStars : "mupen64plus.dll", 0x320100, 0x207B0C;
+    byte bbhStars : "mupen64plus.dll", 0x320100, 0x207B13;
+    byte hmcStars : "mupen64plus.dll", 0x320100, 0x207B12;
+    byte lllStars : "mupen64plus.dll", 0x320100, 0x207B11;
+    byte sslStars : "mupen64plus.dll", 0x320100, 0x207B10;
+    byte dddStars : "mupen64plus.dll", 0x320100, 0x207B17;
+    byte slStars : "mupen64plus.dll", 0x320100, 0x207B16;
+    byte wdwStars : "mupen64plus.dll", 0x320100, 0x207B15;
+    byte ttmStars : "mupen64plus.dll", 0x320100, 0x207B14;
+    byte thiStars : "mupen64plus.dll", 0x320100, 0x207B1B;
+    byte ttcStars : "mupen64plus.dll", 0x320100, 0x207B1A;
+    byte rrStars : "mupen64plus.dll", 0x320100, 0x207B19;
+}
+
 // Memory of JP Mupen64Plus version
 state("mupen64plus-ui-console", "JP") {
     uint gameRunTime : "mupen64plus.dll", 0x3231C1C, 0x32C640;
@@ -50,6 +104,60 @@ state("project64", "JP") {
     byte thiStars : "Project64.exe", 0xD6A1C, 0x207B1B;
     byte ttcStars : "Project64.exe", 0xD6A1C, 0x207B1A;
     byte rrStars : "Project64.exe", 0xD6A1C, 0x207B19;
+}
+
+// Memory of US Rosalie's Mupen GUI version
+state("RMG", "US") {
+    uint gameRunTime : "mupen64plus.dll", 0x0CC658, 0x32D580;
+    uint globalTimer : "mupen64plus.dll", 0x0CC658, 0x32D5D4;
+    byte level : "mupen64plus.dll", 0x0CC658, 0x33B24A;
+    byte stageIndex : "mupen64plus.dll", 0x0CC658, 0x32DDFA;
+    ushort action : "mupen64plus.dll", 0x0CC658, 0x33B17C;
+    byte keys : "mupen64plus.dll", 0x0CC658, 0x207708;
+    short stars : "mupen64plus.dll", 0x0CC658, 0x33B218;
+    byte coins : "mupen64plus.dll", 0x0CC658, 0x33B21A;
+    byte bobStars : "mupen64plus.dll", 0x0CC658, 0x20770F;
+    byte wfStars : "mupen64plus.dll", 0x0CC658, 0x20770E;
+    byte jrbStars : "mupen64plus.dll", 0x0CC658, 0x20770D;
+    byte ccmStars : "mupen64plus.dll", 0x0CC658, 0x20770C;
+    byte bbhStars : "mupen64plus.dll", 0x0CC658, 0x207713;
+    byte hmcStars : "mupen64plus.dll", 0x0CC658, 0x207712;
+    byte lllStars : "mupen64plus.dll", 0x0CC658, 0x207711;
+    byte sslStars : "mupen64plus.dll", 0x0CC658, 0x207710;
+    byte dddStars : "mupen64plus.dll", 0x0CC658, 0x207717;
+    byte slStars : "mupen64plus.dll", 0x0CC658, 0x207716;
+    byte wdwStars : "mupen64plus.dll", 0x0CC658, 0x207715;
+    byte ttmStars : "mupen64plus.dll", 0x0CC658, 0x207714;
+    byte thiStars : "mupen64plus.dll", 0x0CC658, 0x20771B;
+    byte ttcStars : "mupen64plus.dll", 0x0CC658, 0x20771A;
+    byte rrStars : "mupen64plus.dll", 0x0CC658, 0x207719;
+}
+
+// Memory of US m64py version
+state("RMG", "US") {
+    uint gameRunTime : "mupen64plus.dll", 0x320100, 0x32D580;
+    uint globalTimer : "mupen64plus.dll", 0x320100, 0x32D5D4;
+    byte level : "mupen64plus.dll", 0x320100, 0x33B24A;
+    byte stageIndex : "mupen64plus.dll", 0x320100, 0x32DDFA;
+    ushort action : "mupen64plus.dll", 0x320100, 0x33B17C;
+    byte keys : "mupen64plus.dll", 0x320100, 0x207708;
+    short stars : "mupen64plus.dll", 0x320100, 0x33B218;
+    byte coins : "mupen64plus.dll", 0x320100, 0x33B21A;
+    byte bobStars : "mupen64plus.dll", 0x320100, 0x20770F;
+    byte wfStars : "mupen64plus.dll", 0x320100, 0x20770E;
+    byte jrbStars : "mupen64plus.dll", 0x320100, 0x20770D;
+    byte ccmStars : "mupen64plus.dll", 0x320100, 0x20770C;
+    byte bbhStars : "mupen64plus.dll", 0x320100, 0x207713;
+    byte hmcStars : "mupen64plus.dll", 0x320100, 0x207712;
+    byte lllStars : "mupen64plus.dll", 0x320100, 0x207711;
+    byte sslStars : "mupen64plus.dll", 0x320100, 0x207710;
+    byte dddStars : "mupen64plus.dll", 0x320100, 0x207717;
+    byte slStars : "mupen64plus.dll", 0x320100, 0x207716;
+    byte wdwStars : "mupen64plus.dll", 0x320100, 0x207715;
+    byte ttmStars : "mupen64plus.dll", 0x320100, 0x207714;
+    byte thiStars : "mupen64plus.dll", 0x320100, 0x20771B;
+    byte ttcStars : "mupen64plus.dll", 0x320100, 0x20771A;
+    byte rrStars : "mupen64plus.dll", 0x320100, 0x207719;
 }
 
 // Memory of US Mupen64Plus version
